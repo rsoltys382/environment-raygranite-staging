@@ -1,0 +1,79 @@
+Step: build-step-credential-initializer-z6llq:
+
+{"level":"warn","ts":1556139982.057966,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/backport-container-name-fix\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1556139982.0587206,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+Step: build-step-git-source-**********-**-go-http-master-v7sg6:
+
+{"level":"warn","ts":1556139983.6110137,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/backport-container-name-fix\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1556139983.770982,"logger":"fallback-logger","caller":"git-init/main.go:99","msg":"Successfully cloned \"https://github.com/**********/**-go-http\" @ \"v0.0.1\" in path \"/workspace/source\""}
+Step: build-step-place-tools:
+
+Step: build-step-git-merge:
+
+Warning failed to load version: failed to parse version -dev+9e73adc0b: No Major.Minor.Patch elements found
+time="2019-04-24T21:07:38Z" level=info msg="got "
+Using SHAs from PULL_REFS=master:
+time="2019-04-24T21:07:38Z" level=warning msg="no SHAs to merge, falling back to initial cloned commit"
+Step: build-step-setup-**-git-credentials:
+
+Generated Git credentials file /workspace/xdg_config/git/credentials
+Step: build-step-build-make-build:
+
+CGO_ENABLED=0 GO15VENDOREXPERIMENT=1 go build -ldflags '' -o bin/**-go-http main.go
+Step: build-step-build-container-build:
+
+[36mINFO[0m[0000] No base image, nothing to extract            
+[36mINFO[0m[0000] cmd: EXPOSE                                  
+[36mINFO[0m[0000] Adding exposed port: 8080/tcp                
+[36mINFO[0m[0000] Using files from context: [/workspace/source/bin] 
+[36mINFO[0m[0000] Skipping unpacking as no commands require it. 
+[36mINFO[0m[0000] Taking snapshot of full filesystem...        
+[36mINFO[0m[0000] EXPOSE 8080                                  
+[36mINFO[0m[0000] cmd: EXPOSE                                  
+[36mINFO[0m[0000] Adding exposed port: 8080/tcp                
+[36mINFO[0m[0000] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0000] ENTRYPOINT ["/**-go-http"]                   
+[36mINFO[0m[0000] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0000] Using files from context: [/workspace/source/bin] 
+[36mINFO[0m[0000] COPY ./bin/ /                                
+[36mINFO[0m[0000] Taking snapshot of files...                  
+ERROR: logging before flag.Parse: E0424 21:08:02.525197      15 metadata.go:142] while reading 'google-dockercfg' metadata: http status code: 404 while fetching url http://metadata.google.internal./computeMetadata/v1/instance/attributes/google-dockercfg
+ERROR: logging before flag.Parse: E0424 21:08:02.529974      15 metadata.go:159] while reading 'google-dockercfg-url' metadata: http status code: 404 while fetching url http://metadata.google.internal./computeMetadata/v1/instance/attributes/google-dockercfg-url
+2019/04/24 21:08:02 pushed blob: sha256:e788f8439d60651a53472b841d5fc2f4338a41507940b1088d023db60f7ca606
+2019/04/24 21:08:03 pushed blob: sha256:d270b17739ff90cbd473ddace97cf4f262c7d509d50694c6b8e3b36b6cd31ec2
+2019/04/24 21:08:03 10.7.241.52:5000/**********/**-go-http:0.0.1: digest: sha256:0bea484fad34f80c7235b1fdf63d7a011a97d8d28910faa0e643f7ed3194ebed size: 428
+Step: build-step-build-post-build:
+
+no CVE provider running in the current ** namespace so skip adding image to be analysed
+Step: build-step-promote-changelog:
+
+Converted /workspace/source/charts/**-go-http to an unshallow repository
+Generating change log from git ref 271617f51d6cce31085a7594af022d94f0adb30a => 20f2bd88a535ce0e4488196cdb5b6d593990b602
+WARNING: Failed to enrich commits with issues: User.jenkins.io "" is invalid: metadata.name: Required value: name or generateName is required
+WARNING: Failed to enrich commits with issues: User.jenkins.io "" is invalid: metadata.name: Required value: name or generateName is required
+Finding issues in commit messages using git format
+WARNING: No release found for **********/**-go-http and tag v0.0.1 so creating a new release
+Updated the release information at https://github.com/**********/**-go-http/releases/tag/v0.0.1
+generated: /workspace/source/charts/**-go-http/templates/release.yaml
+Created Release **-go-http-0-0-1 resource in namespace **
+Updating PipelineActivity **********-**-go-http-master-1 with version 0.0.1
+Updated PipelineActivities **********-**-go-http-master-1 with release notes URL: https://github.com/**********/**-go-http/releases/tag/v0.0.1
+Step: build-step-promote-helm-release:
+
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: chartmuseum.jenkins-x.io http://chartmuseum.jenkins-x.io
+Successfully added Helm repository chartmuseum.jenkins-x.io.
+Adding missing Helm repo: jenkins-x-chartmuseum http://jenkins-x-chartmuseum:8080
+Successfully added Helm repository jenkins-x-chartmuseum.
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Uploading chart file **-go-http-0.0.1.tgz to http://jenkins-x-chartmuseum:8080/api/charts
+Received 201 response: {"saved":true}
+Step: build-step-promote-**-promote:
+
+WARNING: prow based install so skip waiting for the merge of Pull Requests to go green as currently there is an issue with gettingstatuses from the PR, see https://github.com/jenkins-x/**/issues/2410
+Promoting app **-go-http version 0.0.1 to namespace **-staging
+Created Pull Request: https://github.com/**********/environment-raygranite-staging/pull/1
+
+Pull Request https://github.com/**********/environment-raygranite-staging/pull/1 is merged at sha 81e354d77abf68c8d4ca4dfdd70a32ab9f6ebd92
+Pull Request merged but we are not waiting for the update pipeline to complete!
+WARNING: Could not find the service URL in namespace **-staging for names **-go-http, **-**-go-http, **-staging-**-go-http
